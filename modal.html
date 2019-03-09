@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
-<<!-- Latest compiled and minified CSS -->
+<!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 
 <!-- jQuery library -->
@@ -12,7 +12,89 @@
 
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<style>
+ body{
+        width: 100%;
+        padding-top:4.2rem;
+		padding-bottom:4.2rem;
+/*     background-image: url(adventure-casual-cheerful-541518.jpg)*/
+         background-color: white;
+/*		background:rgba(225,229,237, 0.76);*/
+/*         background-attachment: fixed;*/
+     
+        }
+        a{
+         text-decoration:none !important;
+         }
+         h1,h2,h3{   
+/*         font-family: 'Verdana', cursive;*/
+         font-family: helvetica, cursive;
+         }
 
+          .myform{
+        margin: 20% 20% 20% 12%;
+		position: relative;
+		display: -ms-flexbox;
+		display: flex;
+		padding: 1rem;
+		-ms-flex-direction: column;
+		flex-direction: column;
+		width: 100%;
+		pointer-events: auto;
+		background-color: #ddecff;
+/*              background:rgba(225,229,237, 0.76);*/
+/*		background-clip: padding-box;*/
+		border: 1px solid rgba(0,0,0,.2);
+		border-radius: 1.1rem;
+		outline: 0;
+		max-width: 500px;
+/*              background: inherit;*/
+		 }
+        
+         .mybtn{
+         background-color: #e88e45;
+         border-radius:50px;
+             font-size: 1.5em;
+                 font-weight: 600;
+         }
+    .form-control{
+        border-radius: 50px;
+    }
+    .mybtn:hover{
+        background-color:#007bff ; 
+    }
+        
+          form .error {
+         color: #ff0000;
+         }
+         #second{display:none;}
+/* Frosted Glass
+    .myform:before{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        box-shadow: inset 0 0 2000px rgba(255, 255, 255, .5);
+        filter: blur(10px);
+        background: : inherit;
+         }
+*/
+    @media (max-width: 600px){
+        .myform{
+            width: 100%;
+            margin: 25% 0%;
+/*            margin: 25% 10%;*/
+        }
+         #second{
+/*                margin: auto;*/
+                margin: 5% 2% 45% 2%;
+            }
+    }
+    </style>
+         
+         
 </head>
 
 <body>
@@ -23,14 +105,87 @@
   
   <div class="modal fade" id="popUpWindow">
     <div class="modal-dialog">
-      <div class="modal-content">
+<!--      <div class="modal-content">-->
         <!-- header -->
+<!--
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h3 class="modal-title">Login Form</h3>
         </div>
-        <!-- body -->
-        <div class="modal-header">
+-->
+         <div class="row">
+			<div class="col-md-12 mx-auto">
+			<div id="first">
+				<div class="myform form ">
+					 <div class="logo mb-3">
+						 <div class="col-md-12 text-center">
+							<h1>Login</h1>
+						 </div>
+					</div>
+                   <form action="" method="post" name="login">
+                           <div class="form-group">
+                              <label for="email">Email address</label>
+                              <input type="email" name="email"  class="form-control" id="email"  placeholder="Enter email">
+                           </div>
+                           <div class="form-group">
+                              <label for="password">Password</label>
+                              <input type="password" name="password" id="password"  class="form-control"  placeholder="Enter Password">
+                           </div>
+                           <div class="form-group">
+                              <p class="text-center">By signing up you accept our <a href="#">Terms Of Use</a></p>
+                           </div>
+                           <div class="col-md-12 text-center ">
+                              <button type="submit" class=" btn btn-block mybtn" >LOGIN</button>
+                           </div>
+                           
+                           <div class="form-group">
+                              <p class="text-center">Don't have account? <a href="#" id="signup">Sign up here</a></p>
+                           </div>
+                        </form>
+                 
+				</div>
+			</div>
+			  <div id="second">
+			      <div class="myform form ">
+                        <div class="logo mb-3">
+                           <div class="col-md-12 text-center">
+                              <h1 >Signup</h1>
+                           </div>
+                        </div>
+                        <form action="#" name="registration">
+                           <div class="form-group">
+                              <label for="exampleInputEmail1">First Name</label>
+                              <input type="text"  name="firstname" class="form-control" id="firstname" aria-describedby="emailHelp" placeholder="Enter Firstname">
+                           </div>
+                           <div class="form-group">
+                              <label for="exampleInputEmail1">Last Name</label>
+                              <input type="text"  name="lastname" class="form-control" id="lastname" aria-describedby="emailHelp" placeholder="Enter Lastname">
+                           </div>
+                           <div class="form-group">
+                              <label for="exampleInputEmail1">Email address</label>
+                              <input type="email" name="email"  class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+                           </div>
+                           <div class="form-group">
+                              <label for="exampleInputEmail1">Password</label>
+                              <input type="password" name="password" id="password"  class="form-control" aria-describedby="emailHelp" placeholder="Enter Password">
+                           </div>
+                           <div class="col-md-12 text-center mb-3">
+                              <button type="submit" class=" btn btn-block mybtn">Get Started</button>
+                           </div>
+                           <div class="col-md-12 ">
+                              <div class="form-group">
+                                 <p class="text-center"><a href="#" id="signin">Already have an account?</a></p>
+                              </div>
+                           </div>
+                        
+                  
+                        </form>
+                     </div>
+			</div>
+		</div>
+
+        </div>
+<!--        <div class="modal-header">-->
+<!--
          <form action="" method="post" name="login">
                <div class="form-group">
                   <label for="email">Email address</label>
@@ -51,16 +206,166 @@
                   <p class="text-center">Don't have account? <a href="#" id="signup">Sign up here</a></p>
                </div>
         </form>
+-->
+       
+<!--
+       <div class="row">
+			<div class="col-md-12 mx-auto">
+			<div id="first">
+				<div class="myform form ">
+					 <div class="logo mb-3">
+						 <div class="col-md-12 text-center">
+							<h1>Login</h1>
+						 </div>
+					</div>
+                   <form action="" method="post" name="login">
+                           <div class="form-group">
+                              <label for="email">Email address</label>
+                              <input type="email" name="email"  class="form-control" id="email"  placeholder="Enter email">
+                           </div>
+                           <div class="form-group">
+                              <label for="password">Password</label>
+                              <input type="password" name="password" id="password"  class="form-control"  placeholder="Enter Password">
+                           </div>
+                           <div class="form-group">
+                              <p class="text-center">By signing up you accept our <a href="#">Terms Of Use</a></p>
+                           </div>
+                           <div class="col-md-12 text-center ">
+                              <button type="submit" class=" btn btn-block mybtn" >LOGIN</button>
+                           </div>
+                           
+                           <div class="form-group">
+                              <p class="text-center">Don't have account? <a href="#" id="signup">Sign up here</a></p>
+                           </div>
+                        </form>
+                 
+				</div>
+			</div>
+			  <div id="second">
+			      <div class="myform form ">
+                        <div class="logo mb-3">
+                           <div class="col-md-12 text-center">
+                              <h1 >Signup</h1>
+                           </div>
+                        </div>
+                        <form action="#" name="registration">
+                           <div class="form-group">
+                              <label for="exampleInputEmail1">First Name</label>
+                              <input type="text"  name="firstname" class="form-control" id="firstname" aria-describedby="emailHelp" placeholder="Enter Firstname">
+                           </div>
+                           <div class="form-group">
+                              <label for="exampleInputEmail1">Last Name</label>
+                              <input type="text"  name="lastname" class="form-control" id="lastname" aria-describedby="emailHelp" placeholder="Enter Lastname">
+                           </div>
+                           <div class="form-group">
+                              <label for="exampleInputEmail1">Email address</label>
+                              <input type="email" name="email"  class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+                           </div>
+                           <div class="form-group">
+                              <label for="exampleInputEmail1">Password</label>
+                              <input type="password" name="password" id="password"  class="form-control" aria-describedby="emailHelp" placeholder="Enter Password">
+                           </div>
+                           <div class="col-md-12 text-center mb-3">
+                              <button type="submit" class=" btn btn-block mybtn">Get Started For Free</button>
+                           </div>
+                           <div class="col-md-12 ">
+                              <div class="form-group">
+                                 <p class="text-center"><a href="#" id="signin">Already have an account?</a></p>
+                              </div>
+                           </div>
+                        
+                  
+                        </form>
+                     </div>
+			</div>
+		</div>
+
         </div>
-        <!-- footer -->
-        <div class="modal-footer">
-          <button class="btn btn-primary btn-block">Log In</button>
-        </div>
-        
+-->
+            
       </div>
     </div>
   </div>
   
-</div>
+<!--</div>-->
 </body>
+<script>
+$("#signup").click(function() {
+$("#first").fadeOut("fast", function() {
+$("#second").fadeIn("fast");
+});
+});
+
+$("#signin").click(function() {
+$("#second").fadeOut("fast", function() {
+$("#first").fadeIn("fast");
+});
+});
+
+
+  
+         $(function() {
+           $("form[name='login']").validate({
+             rules: {
+               
+               email: {
+                 required: true,
+                 email: true
+               },
+               password: {
+                 required: true,
+                 
+               }
+             },
+              messages: {
+               email: "Please enter a valid email address",
+              
+               password: {
+                 required: "Please enter password",
+                
+               }
+               
+             },
+             submitHandler: function(form) {
+               form.submit();
+             }
+           });
+         });
+         
+
+
+$(function() {
+  
+  $("form[name='registration']").validate({
+    rules: {
+      firstname: "required",
+      lastname: "required",
+      email: {
+        required: true,
+        email: true
+      },
+      password: {
+        required: true,
+        minlength: 5
+      }
+    },
+    
+    messages: {
+      firstname: "Please enter your firstname",
+      lastname: "Please enter your lastname",
+      password: {
+        required: "Please provide a password",
+        minlength: "Your password must be at least 5 characters long"
+      },
+      email: "Please enter a valid email address"
+    },
+  
+    submitHandler: function(form) {
+      form.submit();
+    }
+  });
+});
+
+
+</script>
 </html>
