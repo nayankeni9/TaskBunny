@@ -190,7 +190,7 @@ border-color: rgb(255,102,203);
 
 /**Login form css: Start**/
 .myform{
-    margin: 20% 20% 20% 12%;
+    margin: 20% 0% 0% 0%;
     position: relative;
     display: -ms-flexbox;
     display: flex;
