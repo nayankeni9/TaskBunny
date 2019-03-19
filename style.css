@@ -70,7 +70,7 @@ border-color: rgb(255,102,203);
     font-family: "Montserrat", sans-serif;
     font-weight: 700;
     letter-spacing: 3px;
-    border-left: 4px solid orange;
+    border-left: 4px solid #fb641b;
 }
 
 #footer .footer-top .footer-info p {
@@ -98,7 +98,7 @@ border-color: rgb(255,102,203);
 }
 
 #footer .footer-top .social-links a:hover {
-    background: orange;
+    background: #fb641b;
     color: #fff;
 }
 
@@ -126,7 +126,7 @@ border-color: rgb(255,102,203);
 }
 
 #footer .footer-top h4::after {
-    background: orange;
+    background: #fb641b;
     width: 60px;
 }
 
@@ -151,7 +151,7 @@ border-color: rgb(255,102,203);
 }
 
 #footer .footer-top .footer-newsletter input[type="submit"] {
-    background:orange;
+    background:#fb641b;
     border: 0;
     width: 35%;
     padding: 6px 0;
@@ -163,7 +163,7 @@ border-color: rgb(255,102,203);
 }
 
 #footer .footer-top .footer-newsletter input[type="submit"]:hover {
-    background: orange;
+    background: #fb641b;
 }
 
 #footer .copyright {
@@ -227,7 +227,7 @@ form .error {
 }
 
 .mybtn{
-    background-color: #e88e45;
+    background-color: #fb641b;
     border-radius:50px;
     font-size: 1.5em;
     font-weight: 600;
@@ -286,7 +286,7 @@ form .error {
   hr{
     width:12%;
     height:2px;
-    background-color: orange;
+    background-color: #fb641b;
   }
   .section-header p{
       text-align: center;
