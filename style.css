@@ -43,7 +43,8 @@ border-color: rgb(255,102,203);
 .main-services{
     width:80%;
     margin:auto;
-    padding-top: 2%
+    padding-top: 2%;
+    padding-bottom: 2%;
 }
 
 .carousel.slide{
@@ -334,3 +335,12 @@ form .error {
       font-size: 1.5em;
       padding-top: 1.5%
   }
+
+.col-sm-12.col-md-4 img{
+    margin:2% 0;
+}
+
+.col-sm-12.col-md-4 p{
+    font-weight: 700;
+    text-align: center;
+}
