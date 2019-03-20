@@ -3,6 +3,13 @@ body{
 }
 
 /********Navbar and Carousal: Start**************/
+.navbar{
+    padding:0 1%;
+}
+.navbar-brand img{
+    width:60%
+}
+
 .navbar-nav.mr-auto li a{
     color:black;
     font-weight: 700;
@@ -40,7 +47,7 @@ border-color: rgb(255,102,203);
 }
 
 .carousel.slide{
-    padding-top: 60.2px;
+    padding-top: 52px;
 }
 
 /********Navbar and Carousal: End**************/
@@ -59,7 +66,7 @@ border-color: rgb(255,102,203);
   
 #footer .footer-top {
     background: #111;
-    padding: 60px 0 30px 0;
+    padding: 5% 0 2% 0;
 }
 
 #footer .footer-top .footer-info {
@@ -172,7 +179,7 @@ border-color: rgb(255,102,203);
 
 #footer .copyright {
     text-align: center;
-    padding-top: 30px;
+    padding-top: 0;
 }
 
 #footer .credits {
@@ -190,8 +197,6 @@ border-color: rgb(255,102,203);
 /*--------------------------------------------------------------
 # Footer:End
 --------------------------------------------------------------*/
-
-
 /**Login form css: Start**/
 .myform{
     margin: 20% 0% 0% 0%;
@@ -322,3 +327,10 @@ form .error {
   }
 
   /*************About Us: End***************/
+
+  .services-text{
+      text-align: center;
+      font-weight: 700;
+      font-size: 1.5em;
+      padding-top: 1.5%
+  }
