@@ -7,108 +7,68 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/bootstrap.css">
-    <link rel="stylesheet" href="../css/style.css">
-    <style>
-    </style>
+    <link rel="stylesheet" href="../static/css/bootstrap.css">
+    <link rel="stylesheet" href="../static/css/style.css">
     </head>
     <body>
-         <section id="about">
-      <div class="container">
-          <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-              <a class="navbar-brand" href="#"><img src="../Task_bunny_logo_2.png"></a>
-              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-            
-              <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Home</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
-                  </li>
-                  <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Services
-                      </a>
-                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                      </div>
-                    </li>
-                </ul>
-                <ul class="navbar-nav">
-                  <li class="nav-item active">
-                      <a class="nav-link" href="#">About Us</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link" data-toggle="modal" data-target="#popUpWindow">Sign In</a>
-                  </li>
-                </ul>
+      <section id="about">
+          {% include 'navbar.html' %}
+          {% include 'modal.html' %}
+        <div class="container">
+          <header class="section-header">
+            <h3>About Us</h3>
+            <hr>
+            <p>At TaskBunny your convenience is our priority. Through our wide range of services, you are just one click away from finding help for home improvement to personal care and everything in between.</p>
+          </header>
+          <div class="row about-cols">
+
+            <div class="col-md-4 wow fadeInUp">
+              <div class="about-col">
+                <div class="img">
+                  <img src="../static/pictures/about-mission.jpg" alt="" class="img-fluid">
+                  <div class="icon"><i class="ion-ios-speedometer-outline"></i></div>
+                </div>
+                <h2 class="title"><a href="#">Our Mission</a></h2>
+                <p>
+                    Our mission is to help people find local professionals to help them with their day to day needs. We aim to provide
+                    a visually pleasing and easy to use interface that is safe and gets the job done.
+                </p>
               </div>
-            </nav>
-
-
-        <header class="section-header">
-          <h3>About Us</h3>
-          <hr>
-          <p>At TaskBunny your convenience is our priority. Through our wide range of services, you are just one click away from finding help for home improvement to personal care and everything in between.</p>
-        </header>
-
-        <div class="row about-cols">
-
-          <div class="col-md-4 wow fadeInUp">
-            <div class="about-col">
-              <div class="img">
-                <img src="../pictures/about-mission.jpg" alt="" class="img-fluid">
-                <div class="icon"><i class="ion-ios-speedometer-outline"></i></div>
-              </div>
-              <h2 class="title"><a href="#">Our Mission</a></h2>
-              <p>
-                  Our mission is to help people find local professionals to help them with their day to day needs. We aim to provide
-                  a visually pleasing and easy to use interface that is safe and gets the job done.
-              </p>
             </div>
-          </div>
 
-          <div class="col-md-4 wow fadeInUp" data-wow-delay="0.1s">
-            <div class="about-col">
-              <div class="img">
-                <img src="../pictures/about-plan.jpg" alt="" class="img-fluid">
-                <div class="icon"><i class="ion-ios-list-outline"></i></div>
+            <div class="col-md-4 wow fadeInUp" data-wow-delay="0.1s">
+              <div class="about-col">
+                <div class="img">
+                  <img src="../static/pictures/about-plan.jpg" alt="" class="img-fluid">
+                  <div class="icon"><i class="ion-ios-list-outline"></i></div>
+                </div>
+                <h2 class="title"><a href="#">Our Plan</a></h2>
+                <p>
+                    Our plan is to create a network of local professionals for each major city in the world. This will give the skilled
+                    professionlas a much wider reach than the existing mediums and hep them lead a fulfilling life.
+                </p>
               </div>
-              <h2 class="title"><a href="#">Our Plan</a></h2>
-              <p>
-                  Our plan is to create a network of local professionals for each major city in the world. This will give the skilled
-                  professionlas a much wider reach than the existing mediums and hep them lead a fulfilling life.
-              </p>
             </div>
-          </div>
 
-          <div class="col-md-4 wow fadeInUp" data-wow-delay="0.2s">
-            <div class="about-col">
-              <div class="img">
-                <img src="../pictures/about-vision.jpg" alt="" class="img-fluid">
-                <div class="icon"><i class="ion-ios-eye-outline"></i></div>
+            <div class="col-md-4 wow fadeInUp" data-wow-delay="0.2s">
+              <div class="about-col">
+                <div class="img">
+                  <img src="../static/pictures/about-vision.jpg" alt="" class="img-fluid">
+                  <div class="icon"><i class="ion-ios-eye-outline"></i></div>
+                </div>
+                <h2 class="title"><a href="#">Our Vision</a></h2>
+                <p>
+                    Our vision is to create a one stop shop for all the daily needs of any individual from a college student to a retired
+                    veteran. We aim to develop a self sustaining platform which is by the people and for the people and gets rid of the middle-men.
+                </p>
               </div>
-              <h2 class="title"><a href="#">Our Vision</a></h2>
-              <p>
-                  Our vision is to create a one stop shop for all the daily needs of any individual from a college student to a retired
-                  veteran. We aim to develop a self sustaining platform which is by the people and for the people and gets rid of the middle-men.
-              </p>
             </div>
-          </div>
 
+          </div>
         </div>
-
-      </div>
-    </section>
+      </section>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src= "../js/modal.js"></script>
+    <script src= "../static/js/modal.js"></script>
     </body>
