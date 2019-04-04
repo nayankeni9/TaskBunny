@@ -34,6 +34,7 @@ def login():
         if bcrypt.hashpw(password, user['password'].encode('utf-8')) == user['password'].encode('utf-8'):
             session['name'] = user['firstname']
             session['email'] = user['email']
+            session['type'] = 'USER'
             return redirect(url_for('home'))
     else:
         return "Username or Password does not match"
@@ -56,7 +57,50 @@ def register():
     mysql.connection.commit()
     session['name']= firstname
     session['email'] = email
+    session['type'] = 'USER'
     return redirect(url_for('home'))
+
+
+@app.route('/tasker_login', methods=['POST'])
+def tasker_login():
+    email= request.form['email']
+    password= request.form['password'].encode('utf-8')
+    
+    cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+    cur.execute("SELECT * FROM tasker where email=%s",(email,))
+    user = cur.fetchone()
+    cur.close()
+    if user is not None:
+        if bcrypt.hashpw(password, user['password'].encode('utf-8')) == user['password'].encode('utf-8'):
+            session['name'] = user['firstname']
+            session['email'] = user['email']
+            session['type'] = 'TASKER'
+            return redirect(url_for('home'))
+    else:
+        return "Username or Password does not match"
+
+@app.route("/tasker_logout")
+def tasker_logout():
+    session.clear()
+    return render_template("index.html")
+
+@app.route('/tasker_register', methods=["POST"])
+def tasker_register():
+    firstname= request.form['firstname']
+    lastname= request.form['lastname']
+    email= request.form['email']
+    contact=request.form['contact']
+    password= request.form['password'].encode('utf-8')
+    hash_password = bcrypt.hashpw(password, bcrypt.gensalt())
+    cur = mysql.connection.cursor()
+    cur.execute("INSERT INTO tasker (firstname,lastname,email,password,contact_number) VALUES(%s,%s,%s,%s,%s)",(firstname,lastname,email,hash_password,contact))
+    mysql.connection.commit()
+    session['name']= firstname
+    session['email'] = email
+    session['type'] = 'TASKER'
+    return redirect(url_for('home'))
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -17,7 +17,7 @@ create table tasker(
     id int primary key NOT NULL AUTO_INCREMENT,
     firstname varchar(40) NOT NULL,
     lastname varchar(40) NOT NULL,
-    contact_number int NOT NULL,
+    contact_number varchar(20) NOT NULL,
     email varchar(40) NOT NULL,
     password varchar(100) NOT NULL,
     street_address varchar(50),

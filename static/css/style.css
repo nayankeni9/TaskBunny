@@ -226,12 +226,17 @@ form .error {
 
 #second{display:none;}
 
+#tasker_second{display:none;}
+
 @media (max-width: 600px){
    .myform{
        width: 100%;
        margin: 25% 0%;
     }
     #second{
+        margin: 5% 2% 45% 2%;
+    }
+    #tasker_second{
         margin: 5% 2% 45% 2%;
     }
 }
