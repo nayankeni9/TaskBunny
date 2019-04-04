@@ -30,7 +30,6 @@ def login():
     cur.execute("SELECT * FROM user where email=%s",(email,))
     user = cur.fetchone()
     cur.close()
-    print(type(user))
     if user is not None:
         if bcrypt.hashpw(password, user['password'].encode('utf-8')) == user['password'].encode('utf-8'):
             session['name'] = user['firstname']
