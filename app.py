@@ -13,8 +13,6 @@ app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 app.secret_key = 'super_secret_key'
 mysql = MySQL(app)
 
-user=[]
-
 @app.route("/")
 def home():
     return render_template("index.html")
@@ -25,7 +23,6 @@ def about():
 
 @app.route('/login', methods=['POST'])
 def login():
-    global user
     email= request.form['email']
     password= request.form['password'].encode('utf-8')
     
@@ -44,8 +41,6 @@ def login():
 
 @app.route("/logout")
 def logout():
-    global user
-    user=[]
     session.clear()
     return render_template("index.html")
 
@@ -61,12 +56,12 @@ def register():
     cur = mysql.connection.cursor()
     cur.execute("INSERT INTO user (firstname,lastname,email,password) VALUES(%s,%s,%s,%s)",(firstname,lastname,email,hash_password,))
     mysql.connection.commit()
-    cur.execute("SELECT * FROM user where email=%s",(email,))
-    user = cur.fetchone()
-    cur.close()
     session['name']= firstname
     session['email'] = email
     session['type'] = 'USER'
+    cur.execute("SELECT * FROM user where email=%s",(session['email'],))
+    user = cur.fetchone()
+    cur.close()
     return redirect(url_for('home'))
 
 
@@ -112,7 +107,10 @@ def tasker_register():
 
 @app.route('/profile')
 def profile():
-    global user
+    cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+    cur.execute("SELECT * FROM user where email=%s",(session['email'],))
+    user = cur.fetchone()
+    cur.close()
     session['mode']='READONLY'
     return render_template("profile.html", user=user)
 
@@ -139,17 +137,21 @@ def save_user():
                 zip=%s
                 where email = %s 
                 """,
-                (firstname,lastname,contact_number, street_address, city, state, zip ,email,))
+                (firstname,lastname,contact_number, street_address, city, state, zip ,session['email'],))
     mysql.connection.commit()
 
-    cur.execute("SELECT * FROM user where email=%s",(email,))
+    cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+    cur.execute("SELECT * FROM user where email=%s",(session['email'],))
     user = cur.fetchone()
     cur.close()
     return redirect(url_for('profile'))
 
 @app.route('/edit_user')
 def edit_user():
-    global user
+    cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+    cur.execute("SELECT * FROM user where email=%s",(session['email'],))
+    user = cur.fetchone()
+    cur.close()
     session['mode']='EDIT'
     return render_template("profile.html", user=user)
 
