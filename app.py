@@ -112,6 +112,7 @@ def profile():
     user = cur.fetchone()
     cur.close()
     session['mode']='READONLY'
+    session['name']= user['firstname']
     return render_template("profile.html", user=user)
 
 @app.route('/save_user' , methods=["POST"])
