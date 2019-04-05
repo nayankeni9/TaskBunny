@@ -4,7 +4,7 @@ create table user(
     lastname varchar(40) NOT NULL,
     email varchar(40) NOT NULL,
     password varchar(100) NOT NULL,
-    contact_number int,
+    contact_number varchar(20),
     street_address varchar(100),
     city varchar(30),
     state varchar(20),

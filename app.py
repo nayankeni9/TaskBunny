@@ -13,6 +13,8 @@ app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 app.secret_key = 'super_secret_key'
 mysql = MySQL(app)
 
+user=[]
+
 @app.route("/")
 def home():
     return render_template("index.html")
@@ -23,6 +25,7 @@ def about():
 
 @app.route('/login', methods=['POST'])
 def login():
+    global user
     email= request.form['email']
     password= request.form['password'].encode('utf-8')
     
@@ -41,11 +44,14 @@ def login():
 
 @app.route("/logout")
 def logout():
+    global user
+    user=[]
     session.clear()
     return render_template("index.html")
 
 @app.route('/register', methods=["POST"])
 def register():
+    global user
     firstname= request.form['firstname']
     lastname= request.form['lastname']
     email= request.form['email']
@@ -55,6 +61,8 @@ def register():
     cur = mysql.connection.cursor()
     cur.execute("INSERT INTO user (firstname,lastname,email,password) VALUES(%s,%s,%s,%s)",(firstname,lastname,email,hash_password,))
     mysql.connection.commit()
+    cur.execute("SELECT * FROM user where email=%s",(email,))
+    user = cur.fetchone()
     session['name']= firstname
     session['email'] = email
     session['type'] = 'USER'
@@ -100,7 +108,52 @@ def tasker_register():
     session['type'] = 'TASKER'
     return redirect(url_for('home'))
 
+@app.route('/profile')
+def profile():
+    global user
+    session['mode']='READONLY'
+    return render_template("profile.html", user=user)
 
+@app.route('/save_user' , methods=["POST"])
+def save_user():
+    global user
+    firstname= request.form['firstname']
+    lastname= request.form['lastname']
+    email= request.form['email']
+    contact_number=request.form['contact_number']
+    street_address=request.form['street_address']
+    city=request.form['city']
+    state=request.form['state']
+    zip=request.form['zip']
+    cur = mysql.connection.cursor()
+    print(firstname,lastname,contact_number, street_address, city, state, zip ,email)
+    cur.execute("""UPDATE user 
+                set firstname=%s,
+                lastname =%s,
+                contact_number=%s,
+                street_address=%s,
+                city=%s,
+                state=%s,
+                zip=%s
+                where email = %s 
+                """,
+                (firstname,lastname,contact_number, street_address, city, state, zip ,email,))
+    mysql.connection.commit()
+
+    cur.execute("SELECT * FROM user where email=%s",(email,))
+    user = cur.fetchone()
+    cur.close()
+    return redirect(url_for('profile'))
+
+@app.route('/edit_user')
+def edit_user():
+    global user
+    session['mode']='EDIT'
+    return render_template("profile.html", user=user)
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
 
 if __name__ == "__main__":
     app.run(debug=True)

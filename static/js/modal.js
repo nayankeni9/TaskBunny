@@ -21,3 +21,11 @@ $("#tasker_signin").click(function() {
     $("#tasker_first").fadeIn("fast");
   });
 });
+
+
+function submitForm(action, method)
+{
+    document.getElementById('editform').action = action;
+    document.getElementById("editform").method = method;
+    document.getElementById('editform').submit();
+}
