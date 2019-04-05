@@ -77,7 +77,7 @@ def tasker_login():
     cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
     cur.execute("SELECT * FROM tasker where email=%s",(email,))
     user = cur.fetchone()
-    cur.close()
+    
     if user is not None:
         if bcrypt.hashpw(password, user['password'].encode('utf-8')) == user['password'].encode('utf-8'):
             session['name'] = user['firstname']
