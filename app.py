@@ -63,6 +63,7 @@ def register():
     mysql.connection.commit()
     cur.execute("SELECT * FROM user where email=%s",(email,))
     user = cur.fetchone()
+    cur.close()
     session['name']= firstname
     session['email'] = email
     session['type'] = 'USER'
@@ -77,7 +78,7 @@ def tasker_login():
     cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
     cur.execute("SELECT * FROM tasker where email=%s",(email,))
     user = cur.fetchone()
-    
+    cur.close()
     if user is not None:
         if bcrypt.hashpw(password, user['password'].encode('utf-8')) == user['password'].encode('utf-8'):
             session['name'] = user['firstname']
@@ -103,6 +104,7 @@ def tasker_register():
     cur = mysql.connection.cursor()
     cur.execute("INSERT INTO tasker (firstname,lastname,email,password,contact_number) VALUES(%s,%s,%s,%s,%s)",(firstname,lastname,email,hash_password,contact))
     mysql.connection.commit()
+    cur.close()
     session['name']= firstname
     session['email'] = email
     session['type'] = 'TASKER'
