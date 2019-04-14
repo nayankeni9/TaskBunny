@@ -160,6 +160,10 @@ def edit_user():
 def home_services():
     return render_template("home_services.html")
 
+@app.route("/book")
+def book():
+    return render_template("booking.html")
+
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404
