@@ -1,0 +1,34 @@
+{% extends "base.html"%}
+{% block content %}
+            {% include 'navbar.html' %}
+            {% include 'modal.html' %}
+            {% include 'tasker_modal.html' %}
+            <div class="home-container">
+                <header class="info-header">
+                    <h4><strong>Home Services</strong></h4>            
+                </header>
+                <div class="row info-border img-thumbnail">
+                    <div class="col-md-6"><img src="../static/pictures/Carpenter.jpeg" alt="..." width="100%"></div>
+                    <div class="col-md-6 info-details"><div><p class="info-para">Home care is care that allows a person with special needs stay in their home.
+                        It might be for people who are getting older, are chronically ill, recovering from surgery, or disabled. 
+                        Home care services include
+                        Home care is care that allows a person with special needs stay in their home.
+                        It might be for people who are getting older, are chronically ill, recovering from surgery, or disabled. 
+                        Home care services include
+                        </p>
+                        <br>
+                        <strong>
+                            Some of our services
+                        </strong>
+                        <ul>
+                            <li>Cleaning</li>
+                            <li>Interior Decoration</li>    
+                            <li>Plumbing</li>
+                        </ul></div>
+                        <div class="btn-center">
+                            <button type="button" class="btn btn-orange btn-lg">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+{% endblock %}

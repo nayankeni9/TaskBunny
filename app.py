@@ -156,6 +156,10 @@ def edit_user():
     session['mode']='EDIT'
     return render_template("profile.html", user=user)
 
+@app.route('/home_services')
+def home_services():
+    return render_template("home_services.html")
+
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404

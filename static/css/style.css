@@ -341,3 +341,44 @@ form .error {
 .profile{
     padding-top: 52px;
 }
+
+/*Styling for services pages and index.html*/
+.home-container{
+    padding-top: 60px;
+    width: 90%;
+    margin: auto;
+}
+
+.info-header h4{
+    text-align:center;
+    margin: 2%;
+}
+.info-border{
+    padding: 2%
+}
+
+.info-details{
+    padding-top: 5px;
+}
+
+.btn-orange{
+    margin-top:1%;
+    background-color:#fb641b;
+    color:white;
+}
+.btn-center{
+    display: flex; 
+    justify-content: center;
+}
+
+.info-para{
+    margin-top: 5px;
+}
+
+.col-sm-12.col-md-4 div a{
+    color:#212529
+}
+
+.col-sm-12.col-md-4 div a:hover{
+    color:blue;
+}
