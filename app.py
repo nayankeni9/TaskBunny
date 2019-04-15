@@ -156,6 +156,64 @@ def edit_user():
     session['mode']='EDIT'
     return render_template("profile.html", user=user)
 
+@app.route('/tasker_profile')
+def tasker_profile():
+    cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+    cur.execute("SELECT * FROM tasker where email=%s",(session['email'],))
+    tasker = cur.fetchone()
+    cur.execute("SELECT Service_Id,Service_Name FROM Service")
+    services = cur.fetchall()
+    cur.close()
+    session['mode']='READONLY'
+    session['name']= tasker['firstname']
+    return render_template("tasker_profile.html", tasker=tasker, services=services)
+
+@app.route('/save_tasker' , methods=["POST"])
+def save_tasker():
+    firstname= request.form['firstname']
+    lastname= request.form['lastname']
+    email= request.form['email']
+    contact_number=request.form['contact_number']
+    street_address=request.form['street_address']
+    city=request.form['city']
+    state=request.form['state']
+    zip=request.form['zip']
+    primary_skill = int(request.form['service_category'])
+    tasker_age= request.form['age']
+    cur = mysql.connection.cursor()
+    print(firstname,lastname,contact_number, street_address, city, state, zip ,email, primary_skill)
+    cur.execute("""UPDATE tasker 
+                set firstname=%s,
+                lastname =%s,
+                contact_number=%s,
+                street_address=%s,
+                city=%s,
+                state=%s,
+                zip=%s,
+                primary_skill=%s,
+                tasker_age = %s
+                where email = %s 
+                """,
+                (firstname,lastname,contact_number, street_address, city, state, zip ,primary_skill, tasker_age, session['email'],))
+    mysql.connection.commit()
+
+    cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+    cur.execute("SELECT * FROM tasker where email=%s",(session['email'],))
+    tasker = cur.fetchone()
+    cur.close()
+    return redirect(url_for('tasker_profile'))
+
+@app.route('/edit_tasker')
+def edit_tasker():
+    cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+    cur.execute("SELECT * FROM tasker where email=%s",(session['email'],))
+    tasker = cur.fetchone()
+    cur.execute("SELECT Service_Id,Service_Name FROM Service")
+    services = cur.fetchall()
+    cur.close()
+    session['mode']='EDIT'
+    return render_template("tasker_profile.html", tasker=tasker, services=services)
+
 @app.route('/home_services')
 def home_services():
     return render_template("home_services.html")
