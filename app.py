@@ -180,6 +180,7 @@ def save_tasker():
     zip=request.form['zip']
     primary_skill = int(request.form['service_category'])
     tasker_age= request.form['age']
+    about_me = request.form['about_me']
     cur = mysql.connection.cursor()
     print(firstname,lastname,contact_number, street_address, city, state, zip ,email, primary_skill)
     cur.execute("""UPDATE tasker 
@@ -191,10 +192,11 @@ def save_tasker():
                 state=%s,
                 zip=%s,
                 primary_skill=%s,
-                tasker_age = %s
+                tasker_age = %s,
+                about_me=%s
                 where email = %s 
                 """,
-                (firstname,lastname,contact_number, street_address, city, state, zip ,primary_skill, tasker_age, session['email'],))
+                (firstname,lastname,contact_number, street_address, city, state, zip ,primary_skill, tasker_age, about_me, session['email'],))
     mysql.connection.commit()
 
     cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)

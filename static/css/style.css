@@ -220,6 +220,10 @@ border-color: rgb(255,102,203);
     border-radius: 50px;
 }
 
+#about_me{
+    border-radius: 10px;
+}
+
 form .error {
     color: #ff0000;
 }

@@ -81,7 +81,12 @@
               </select>
             </div>
           </div>
-
+          <div class="form-group">
+            <label class="col-md-3 control-label">About Me</label>
+            <div class="col-md-8">
+              <textarea class="form-control" rows="4" name="about_me" id="about_me">{{ tasker['about_me'] }}</textarea>
+            </div>
+          </div>
 
           <div class="form-group">
             <label class="col-md-3 control-label"></label>
@@ -166,6 +171,12 @@
                 <option value="5" {% if tasker.primary_skill=='5' %} selected="selected" {% endif %}>Event Planning</option>
                 <option value="6" {% if tasker.primary_skill not in ['1','2','3','4','5'] %} selected="selected" {% else %} hidden{% endif %}>None</option>
             </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-3 control-label">About Me</label>
+          <div class="col-md-8">
+            <textarea class="form-control" rows="4" name="about_me" id="about_me" readonly>{{ tasker['about_me'] }}</textarea>
           </div>
         </div>
 
