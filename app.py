@@ -2,6 +2,8 @@ from flask import Flask, render_template, request, url_for, redirect, session
 import json
 from flask_mysqldb import MySQL, MySQLdb
 import bcrypt
+import imagesrc
+
 mysql = MySQL()
 app = Flask(__name__)
 # app._static_folder = 'static'
