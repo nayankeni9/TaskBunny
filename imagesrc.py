@@ -6,7 +6,7 @@ tasker_images={
     5: "https://images.pexels.com/photos/937481/pexels-photo-937481.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
     6: "https://images.pexels.com/photos/936072/pexels-photo-936072.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
     7: "https://images.pexels.com/photos/247885/pexels-photo-247885.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-    8: "https://images.pexels.com/photos/1112540/pexels-photo-1112540.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+    8: "https://images.pexels.com/photos/542282/pexels-photo-542282.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
     9: "https://images.pexels.com/photos/1138903/pexels-photo-1138903.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
     10: "https://images.pexels.com/photos/1212984/pexels-photo-1212984.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
     11: "https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
@@ -26,6 +26,5 @@ tasker_images={
     25: "https://images.pexels.com/photos/6110/man-holiday-people-face.jpg?auto=compress&cs=tinysrgb&dpr=1&w=500",
     26: "https://images.pexels.com/photos/1764447/pexels-photo-1764447.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
     27: "https://images.pexels.com/photos/713520/pexels-photo-713520.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-    28: "https://images.pexels.com/photos/1011529/pexels-photo-1011529.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-    29: "https://images.pexels.com/photos/542282/pexels-photo-542282.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+    28: "https://images.pexels.com/photos/1011529/pexels-photo-1011529.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
 }
