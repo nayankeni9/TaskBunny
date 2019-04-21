@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% include 'navbar.html' %}
+{% include 'modal.html' %}
+{% include 'tasker_modal.html' %}
+{% block content %}
+
+<div class="orders" style="margin-top:8%;">
+    <div class="container">
+            <h1 style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            text-align: center; margin-bottom: 5%;">Your Orders</h1>
+        <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">OrderID</th>
+                <th scope="col">Tasker Name</th>
+                <th scope="col">Order Category</th>
+                <th scope="col">Order Date</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for order in order_list %}
+              <tr>
+                <th scope="row">{{ order['Order_Id'] }}</th>
+                <td>{{ order['Tasker_name'] }}</td>
+                <td>{{ order['Task_Category'] }}</td>
+                <td>{{ order['Task_Date'] }}</td>
+                <td><a href="#" class="btn btn-danger btn-sm" type="submit"> Cancel</a></td>
+              </tr>
+              {%endfor%}
+            </tbody>
+          </table>
+    </div>
+</div>
+
+{%endblock%}
