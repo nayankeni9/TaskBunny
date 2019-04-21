@@ -9,7 +9,7 @@
 <div class="container profile">
 
 <hr>
-<form class="form-horizontal" role="form" id=editform>
+<form class="form-horizontal" role="form" id=editform action="/order" method="POST">
     <div class="col-md-12 personal-info" id="formpage_1" style="visibility:visible;">
     <div class="alert alert-info alert-dismissable">
         <a class="panel-close close" data-dismiss="alert">x</a>
@@ -20,53 +20,61 @@
         <div class="form-group">
             <div class="col-xs-6">
                     <label >Select a Service Category</label>
-                    <select class="form-control service" name="servicategory" id="select1">
-                        <!-- <option value="0">Select a Service Category</option> -->
-                        <option value="1">Home</option>
-                        <option value="2">Baby-sitting</option>
-                        <option value="3">Personal Grooming</option>
-                        <option value="4">Appliance Repair</option>
+                    <select class="form-control service" name="category" id="select1">
+                        <option value="1">Home Services</option>
+                        <option value="2">Pet Care</option>
+                        <option value="3">Tech Repair</option>
+                        <option value="3">Personal Care</option>
+                        <option value="4">Event Planning</option>
                     </select>
                     </div>
         </div>
         <div class="form-group">
             <div class="col-xs-6">
                     <label >Select Service Type</label>
-                    <select class="form-control service" name="servicetype" id="select2">
-                        <!-- <option value="0">Select a service type</option> -->
-                        <option value="1">Banana</option>
-                        <option value="1">Apple</option>
-                        <option value="1">Orange</option>
-                        <option value="2">Wolf</option>
-                        <option value="2">Fox</option>
-                        <option value="2">Bear</option>
-                        <option value="3">Eagle</option>
-                        <option value="3">Hawk</option>
-                        <option value="4">BWM<option>
+                    <select class="form-control service" name="type" id="select2">
+                        <option value="1">Plumbing</option>
+                        <option value="1">Carpentry</option>
+                        <option value="1">Painting</option>
+                        <option value="1">Bathroom Cleaning</option>
+                        <option value="1">Carpet Cleaning</option>
+                        <option value="2">Pet Sitting</option>
+                        <option value="2">Vacation Visits</option>
+                        <option value="2">Overnight Stay</option>
+                        <option value="2">Poop Scooping</option>
+                        <option value="2">Pet Grooming</option>
+                        <option value="3">Light Installation</option>
+                        <option value="3">General Electrician</option>
+                        <option value="3">AC Service & Repair</option>
+                        <option value="3">Washing Machine Repair</option>
+                        <option value="3">Refrigerator Repair</option>
+                        <option value="4">Mobile Repair<option>
+                        <option value="4">Salon at Home<option>
+                        <option value="4">Massage for Men/Women<option>
+                        <option value="4">Makeup & Hairstyling<option>
+                        <option value="4">Men Haircut & Grooming<option>
+                        <option value="5">Event Decoration<option>
+                        <option value="5">Event Staffing<option>
+                        <option value="5">Party Planning<option>
+                        <option value="5">Entertainer<option>
+                        <option value="5">Event Help & Wait Staff<option>
                     </select>
             </div>
         </div>
-        <!-- <div class="form-group">
-        <label class="col-lg-3 control-label">Email:</label>
-        <div class="col-lg-8">
-            <input class="form-control" type="text" value="" name="email" readonly>
-        </div>
-        </div> -->
         <div class="form-group">
             <label >Select Date</label>
-            <input type="date" name="orderdate" max="3000-12-31" 
+            <input type="date" name="date" max="3000-12-31" 
                     min="1000-01-01" class="form-control">
         </div>
         <div class="form-group">
             <label >Select Time</label>
-            <input type="time" name="ordertime" max="12" 
+            <input type="time" name="time" max="12" 
                     min="00" class="form-control">
         </div>
         <div class="form-group">
             <div class="col-xs-6">
                 <label>Select a service Location</label>
-                    <select class="form-control service" name="orderlocation" id="select2">
-                        <!-- <option value="0">Select a service Location</option> -->
+                    <select class="form-control service" name="location" id="select3">
                         <option value="1">Bryan</option>
                         <option value="2">College Station</option>
                     </select>
@@ -74,45 +82,120 @@
         </div>
         <div class="form-group">
                 <label >Enter Address</label>
-                <input type="text" name="orderaddress" class="form-control">
+                <input type="text" name="address" class="form-control">
         </div>
-        <!-- <div class="form-group">
-        <label class="col-md-3 control-label"></label>
-        <div class="col-md-8">
-            <input type="button" class="btn btn-primary" value="Book Service" onclick="submitForm('/save_user','POST')">
-            <span></span>
-            <input type="button" class="btn btn-warning" value="Cancel" onclick="submitForm('/profile','GET')">
-        </div>
-        </div> -->
+
         <div class="form-group">
-                <button type="button" class="btn btn-primary" onclick="pagechange(1,2)">Next</button>
+            <label>Service Description</label>
+            <div>
+              <textarea class="form-control" rows="3" name="service_description" id="service_description"></textarea>
+            </div>
+          </div>
+
+        <div class="form-group">
+                <button type="button" class="btn btn-primary" onclick="getTaskerList()">Next</button>
         </div>
         
     </div>
     <div id="formpage_2" style="visibility:hidden;">
         <section id="about">
-        <div class="row about-cols">
-
-            <div class="col-md-4 wow fadeInUp">
-                    <div class="about-col">
-                        <div class="img">
-                        <img src="../static/pictures/about-mission.jpg" alt="" class="img-fluid">
-                        <!-- <div class="icon"><i class="ion-ios-speedometer-outline"></i></div> -->
-                        </div>
-                        <h2 class="title"><a href="#">Brandon Smith</a></h2>
-                        
-                        <p>
-                            Our mission is to help people find local professionals to help them with their day to day needs. We aim to provide
-                            a visually pleasing and easy to use interface that is safe and gets the job done.
-                        </p>
-                        <p>Age: 45 </p>
-                        <p>Rating: 3/5 </p>
-                    </div>
-            </div>
-
+        <div class="row about-cols" id="tasker_list">
         </div>
         
         </section>
+        <div class="form-group">
+                <button type="button" class="btn btn-primary" onclick="pagechange(2,1)">Back</button>
+        </div>
+    </div>
+    
+    <style>
+        #formpage_3 .contain{
+            width: 50%;
+            margin: 5% auto;
+        }
+        #formpage_3 input[type=text], select {
+          width: 100%;
+          padding: 12px 20px;
+          margin: 0.5% 0%;
+          display: inline-block;
+          border: 1px solid #ccc;
+          border-radius: 50px;
+          box-sizing: border-box;
+        }
+        
+        #formpage_3 input[type=submit] {
+          width: 100%;
+          background-color: #ffc107;
+          color: black;
+          padding: 14px 20px;
+          margin: 5% 0%;
+          border: none;
+          border-radius: 50px;
+          cursor: pointer;
+        }
+        #formpage_3 label{
+            margin-top: 3%;
+        }
+        
+        #formpage_3 input[type=submit]:hover {
+          background-color: #d4a20b;
+        }
+        
+        #formpage_3 .form {
+          border-radius: 5px;
+          padding: 20px;
+        }
+
+        #service_description, #preview_description{
+            border-radius: 5px;
+        }
+</style>
+
+    <div id="formpage_3" style="visibility:hidden;">
+        <div class="contain">
+        
+            <div class="form">
+                <label for="preview_service">Service Category</label>
+                <input type="text" id="preview_service" name="preview_service" placeholder="Service category" readonly>
+    
+            
+                <label for="preview_service_type">Service Type</label>
+                <input type="text" id="preview_service_type" name="preview_service_type" placeholder="service Type" readonly>
+    
+                <label for="preview_date">Service Date</label>
+                <input type="text" id="preview_date" name="preview_date" placeholder="Date" readonly>
+    
+                <label for="preview_time">Service Time</label>
+                <input type="text" id="preview_time" name="preview_time" placeholder="Time" readonly>
+    
+                <label for="preview_location">Service Location</label>
+                <input type="text" id="preview_location" name="preview_location" placeholder="Location" readonly>
+    
+                <label for="preview_address">Service Address</label>
+                <input type="text" id="preview_address" name="preview_address" placeholder="Address" readonly>
+    
+                <label for="preview_tasker_name">Tasker Name</label>
+                <input type="text" id="preview_tasker_name" name="preview_tasker_name" placeholder="Tasker" readonly>
+
+                <label for="preview_tasker_email">Tasker Email</label>
+                <input type="text" id="preview_tasker_email" name="preview_tasker_email" placeholder="Email" readonly>
+
+                <label for="preview_rate">Service Rate ($/hr)</label>
+                <input type="text" id="preview_rate" name="preview_rate" placeholder="Service Rate" readonly>
+
+                <label for="preview_description">Service Description</label>
+                    <div>
+                      <textarea class="form-control" rows="3" name="preview_description" id="preview_description" readonly></textarea>
+                    </div>
+                  </div>
+                
+                   
+                <input type="submit" value="Confirm">
+            </div>
+
+        <div class="form-group">
+            <button type="button" class="btn btn-primary" onclick="pagechange(3,2)">Back</button>
+        </div>
     </div>
 </form>
 </div>

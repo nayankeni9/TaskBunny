@@ -1,8 +1,9 @@
-from flask import Flask, render_template, request, url_for, redirect, session
+from flask import Flask, render_template, request, url_for, redirect, session, jsonify
 import json
 from flask_mysqldb import MySQL, MySQLdb
 import bcrypt
 import imagesrc
+import random
 
 mysql = MySQL()
 app = Flask(__name__)
@@ -129,7 +130,6 @@ def save_user():
     state=request.form['state']
     zip=request.form['zip']
     cur = mysql.connection.cursor()
-    print(firstname,lastname,contact_number, street_address, city, state, zip ,email)
     cur.execute("""UPDATE user 
                 set firstname=%s,
                 lastname =%s,
@@ -184,7 +184,6 @@ def save_tasker():
     tasker_age= request.form['age']
     about_me = request.form['about_me']
     cur = mysql.connection.cursor()
-    print(firstname,lastname,contact_number, street_address, city, state, zip ,email, primary_skill)
     cur.execute("""UPDATE tasker 
                 set firstname=%s,
                 lastname =%s,
@@ -229,6 +228,78 @@ def book():
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404
+
+@app.route("/tasker_list")
+def tasker_list():
+    category = request.args.get("category")
+    cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+    cur.execute("""SELECT * FROM tasker where primary_skill=%s and 
+                    tasker.id not in(select Tasker_Id from `Task_Assignment` where Task_Status = 'PENDING')""",(category))
+    tasker_list = cur.fetchall()
+    cur.close()
+    tasker_json = []
+    for tasker in tasker_list:
+        tasker_obj={"id": tasker['id'],
+                      "Service_Id": tasker['Service_Id'], 
+                      "firstname": tasker['firstname'], 
+                      "lastname": tasker['lastname'], 
+                      "contact_number": tasker['contact_number'], 
+                      "email": tasker['email'],
+                      "street_address": tasker['street_address'],
+                      "city": tasker['city'],
+                      "state": tasker['state'],
+                      "zip": tasker['zip'], 
+                      "primary_skill": tasker['primary_skill'], 
+                      "tasker_age": tasker['tasker_age'],
+                      "about_me": tasker['about_me'], 
+                      "vehicle_owned": tasker['vehicle_owned'], 
+                      "reward": tasker['reward'], 
+                      "is_active": tasker['is_active'],
+                      "image": imagesrc.tasker_images[tasker['id']],
+                      "service_rate": tasker['service_rate']
+                    }
+        tasker_json.append(tasker_obj)
+    print(tasker_json)
+    return jsonify({"tasker_list": tasker_json})
+
+@app.route("/order" , methods=["POST"])
+def order():
+    service_name = request.form['preview_service']
+    service_type_name = request.form['preview_service_type']
+    service_date = request.form['preview_date']
+    service_time = request.form['preview_time']
+    service_location = request.form['preview_location']
+    service_address = request.form['preview_address']
+    service_tasker_name = request.form['preview_service_type']
+    service_tasker_email = request.form['preview_tasker_email']
+    service_time = request.form['preview_time']
+    service_description = request.form['preview_description']
+    primary_key = random.randint(1, 9999999)
+
+    cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+    cur.execute("""INSERT INTO `Order`(Order_Id, User_Id, Service_Id, Order_Date, Service_Type, Service_Description, Service_Date, Service_Time)
+                   values (%s,
+                           (select id from user where email = %s),
+                           (select Service_Id from Service where trim(Service_name) = trim(%s)),
+                           CURDATE(),
+                           %s,
+                           %s,
+                           %s,
+                           %s
+                           )""",(primary_key, session['email'], service_name, service_type_name, service_description, service_date, service_time))
+
+
+    cur.execute("""INSERT INTO `Task_Assignment`(Tasker_Id, Order_Id, Task_Status)
+                VALUES(
+                    (select id from tasker where email = %s),
+                    %s,
+                    'PENDING'
+                )""", (service_tasker_email, primary_key))
+    mysql.connection.commit()
+    cur.close()
+
+    return redirect(url_for('home'))
+
 
 if __name__ == "__main__":
     app.run(debug=True)
