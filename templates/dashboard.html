@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% include 'navbar.html' %}
+{% include 'modal.html' %}
+{% include 'tasker_modal.html' %}
+{% block content %}
+<div class="dashboard" style="margin-top:8%;">
+<div class="container">
+        <h1 style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        text-align: center; margin-bottom: 5%;">TaskBunny Admin Dashboard</h1>
+
+        <table id="table" 
+                     data-toggle="table"
+                     data-search="true"
+                     data-filter-control="true" 
+        
+                     data-click-to-select="true"
+                     data-toolbar="#toolbar">
+            <thead>
+                <tr>
+                    <!-- <th data-field="state" data-checkbox="true"></th> -->
+                    <th data-field="Id" data-filter-control="input" data-sortable="true">Order ID</th>
+                    <th data-field="Customer" data-filter-control="input" data-sortable="true">Customer Name</th>
+                    <th data-field="Tasker" data-filter-control="input" data-sortable="true">Tasker Name</th>
+                    <th data-field="Category" data-filter-control="select" data-sortable="true">Task Category</th>
+                    <th data-field="Type" data-filter-control="select" data-sortable="true">Task Type</th>
+                    <th data-field="date" data-filter-control="input" data-sortable="true">Task Date</th>
+                    <th data-field="Status" data-filter-control="select" data-sortable="true">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for record in dashboard_list %}
+                <tr>
+                    <td>{{ record['Order_Id'] }}</td>
+                    <td>{{ record['Tasker_name'] }}</td>
+                    <td>{{ record['User_name'] }}</td>
+                    <td>{{ record['Task_Category'] }}</td>
+                    <td>{{ record['Task_Type'] }}</td>
+                    <td>{{ record['Task_Date'] }}</td>
+                    <td>{{ record['Task_Status'] }}</td>
+                </tr>
+               {% endfor %}
+               
+            </tbody>
+        </table>
+        </div>
+    </div>
+{%endblock%}

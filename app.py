@@ -300,6 +300,25 @@ def order():
 
     return redirect(url_for('home'))
 
+@app.route("/dashboard")
+def dashboard():
+
+    cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+    cur.execute("""SELECT o.Order_Id as Order_Id, 
+                (Select CONCAT(firstname," ",lastname) from tasker where id = t.Tasker_Id) as Tasker_name,
+                (Select CONCAT(firstname," ",lastname) from user where id = o.User_Id) as User_name,
+                (SELECT Service_Name from Service where Service_Id = o.Service_Id) as Task_Category,
+                o.Service_Type as Task_Type,
+                o.Service_Date as Task_Date,
+                t.Task_Status as Task_Status
+
+                FROM `Order` o, Task_Assignment t
+                WHERE o.Order_Id = t.Order_Id;""")
+    
+    dashboard_list = cur.fetchall()
+    cur.close()
+    return render_template("dashboard.html",dashboard_list = dashboard_list)
+
 
 if __name__ == "__main__":
     app.run(debug=True)

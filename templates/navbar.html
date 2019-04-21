@@ -26,9 +26,15 @@
               </li>
           </ul>
           <ul class="navbar-nav">
+              {% if session['type']=='USER' and session['email'] in ['nayankeni9@gmail.com', 'subodhsghuge@gmail.com', 'swapnil@gmail.com' ] %}
+              <li class="nav-item">
+                  <a class="btn btn-warning" href="dashboard">Dashboard</a>
+                </li>
+              {% else %}
             <li class="nav-item">
                 <a class="btn btn-warning" href="book">Book a Service</a>
               </li>
+              {% endif %}
             {% if session['name'] and session['type']=='TASKER' %}
             <li class="nav-item">
               <a class="nav-link" href="tasker_profile">Welcome, {{ session['name'] }}</a>
