@@ -14,7 +14,7 @@ tasker_images={
     13: "https://images.pexels.com/photos/34667/person-human-male-man.jpg?auto=compress&cs=tinysrgb&dpr=1&w=500",
     14: "https://images.pexels.com/photos/1073097/pexels-photo-1073097.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
     15: "https://images.pexels.com/photos/262391/pexels-photo-262391.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-    16: "https://images.pexels.com/photos/262391/pexels-photo-262391.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+    16: "https://images.pexels.com/photos/1011529/pexels-photo-1011529.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
     17: "https://images.pexels.com/photos/819530/pexels-photo-819530.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
     18: "https://images.pexels.com/photos/935969/pexels-photo-935969.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
     19: "https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
@@ -25,6 +25,5 @@ tasker_images={
     24: "https://images.pexels.com/photos/1146603/pexels-photo-1146603.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
     25: "https://images.pexels.com/photos/6110/man-holiday-people-face.jpg?auto=compress&cs=tinysrgb&dpr=1&w=500",
     26: "https://images.pexels.com/photos/1764447/pexels-photo-1764447.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-    27: "https://images.pexels.com/photos/713520/pexels-photo-713520.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-    28: "https://images.pexels.com/photos/1011529/pexels-photo-1011529.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+    27: "https://images.pexels.com/photos/713520/pexels-photo-713520.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
 }
