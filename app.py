@@ -223,6 +223,22 @@ def edit_tasker():
 def home_services():
     return render_template("home_services.html")
 
+@app.route('/event_planning')
+def event_planning():
+    return render_template("event_planning.html")
+
+@app.route('/personal_care')
+def personal_care():
+    return render_template("personal_care.html")
+
+@app.route('/pet_care')
+def pet_care():
+    return render_template("pet_care.html")
+
+@app.route('/tech_repair')
+def tech_repair():
+    return render_template("tech_repair.html")
+
 @app.route("/book")
 def book():
     return render_template("booking.html")

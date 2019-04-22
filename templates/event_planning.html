@@ -1,0 +1,38 @@
+{% extends "base.html"%}
+{% block content %}
+            {% include 'navbar.html' %}
+            {% include 'modal.html' %}
+            {% include 'tasker_modal.html' %}
+            <div class="home-container">
+                <header class="info-header">
+                    <h4><strong>Event Planning</strong></h4>            
+                </header>
+                <div class="row info-border img-thumbnail">
+                    <div class="col-md-6"><img src="../static/pictures/event.jpg" alt="..." width="100%"></div>
+                    <div class="col-md-6 info-details"><div><p class="info-para">Do you want to plan an event? Do not worry. 
+					We are here to organize your any upcoming events. 
+					We have people who have expertise in personal as well as formal or business events. We take care of all the vendors, bookings at your budget. 
+					We also help you with delicious food at your event. And all of these comes at a reasonable price when booked through Task Bunny. 
+					So, are you up for throwing a party tonight?
+					Event Planning services include
+                        </p>
+                        <br>
+                        <strong>
+                            Some of our services
+                        </strong>
+                        <ul>
+                            <li>Event decoration</li>
+                            <li>Event staffing</li>    
+                            <li>Party planning</li>
+							<li>Entertainer</li>
+							<li>Bartending</li>
+							<li>Event help and wait staff</li>
+
+                        </ul></div>
+                        <div class="btn-center">
+                            <button type="button" class="btn btn-orange btn-lg" onclick="window.location.href='book';">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+{% endblock %}

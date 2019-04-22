@@ -1,0 +1,38 @@
+{% extends "base.html"%}
+{% block content %}
+            {% include 'navbar.html' %}
+            {% include 'modal.html' %}
+            {% include 'tasker_modal.html' %}
+            <div class="home-container">
+                <header class="info-header">
+                    <h4><strong>Personal Care</strong></h4>            
+                </header>
+                <div class="row info-border img-thumbnail">
+                    <div class="col-md-6"><img src="../static/pictures/HairCutting.jpeg" alt="..." width="100%"></div>
+                    <div class="col-md-6 info-details"><div><p class="info-para">Who doesn’t want to look good! We are always there for you to get you groomed and dressed up for your events and parties. 
+					We offer salon services as a reasonable cost. 
+					Our people at service are well trained and have gained expertise in their respective fields. 
+					We have photographers, packers and movers, lawyers, home tutors who can take care of your personal work. 
+					So, what are you waiting for? Book our services and relax. 
+					Personal care services include
+                        </p>
+                        <br>
+                        <strong>
+                            Some of our services
+                        </strong>
+                        <ul>
+                            <li>Salon at home</li>
+                            <li>Massage for men/women</li>    
+                            <li>Makeup and hairstyling</li>
+							<li>Men haircut and grooming</li>
+							<li>Home Tutor</li>
+							<li>Lawyer</li>
+							<li>Event photographer</li>
+                        </ul></div>
+                        <div class="btn-center">
+                            <button type="button" class="btn btn-orange btn-lg" onclick="window.location.href='book';">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+{% endblock %}

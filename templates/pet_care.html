@@ -1,0 +1,36 @@
+{% extends "base.html"%}
+{% block content %}
+            {% include 'navbar.html' %}
+            {% include 'modal.html' %}
+            {% include 'tasker_modal.html' %}
+            <div class="home-container">
+                <header class="info-header">
+                    <h4><strong>Pet Care</strong></h4>            
+                </header>
+                <div class="row info-border img-thumbnail">
+                    <div class="col-md-6"><img src="../static/pictures/PetCare.jpeg" alt="..." width="100%"></div>
+                    <div class="col-md-6 info-details"><div><p class="info-para">If you are too busy with your work, leave your pets to our pet care services.
+                        You don’t need to leave your pets alone now.
+                        We take care of your pets like babies. We take care of all kinds of animals such as dogs, cats, rabbits, pigs, horses, cows and goats in the environments which are best for them.
+                        Register with our services and find the right person next to you for your pets. 
+						Pet care services include
+                        </p>
+                        <br>
+                        <strong>
+                            Some of our services
+                        </strong>
+                        <ul>
+                            <li>Pet Sitting</li>
+                            <li>Vacation visits</li>    
+                            <li>Overnight Stay</li>
+							<li>Pooping scooping</li>
+							<li>Pet grooming</li>
+							<li>Pet training</li>						
+                        </ul></div>
+                        <div class="btn-center">
+                            <button type="button" class="btn btn-orange btn-lg" onclick="window.location.href='book';">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+{% endblock %}

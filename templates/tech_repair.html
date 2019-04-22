@@ -1,0 +1,38 @@
+{% extends "base.html"%}
+{% block content %}
+            {% include 'navbar.html' %}
+            {% include 'modal.html' %}
+            {% include 'tasker_modal.html' %}
+            <div class="home-container">
+                <header class="info-header">
+                    <h4><strong>Tech Repair</strong></h4>            
+                </header>
+                <div class="row info-border img-thumbnail">
+                    <div class="col-md-6"><img src="../static/pictures/Electrician.jpeg" alt="..." width="100%"></div>
+                    <div class="col-md-6 info-details"><div><p class="info-para">Things do not always work as we expect. 
+					Therefore, we have our tech repair services for all the electronics issues at your home. 
+					We have our experts in solving problems with your air conditioners, lights or any other home appliances such as refrigerator, microwave, washing machine, etc. 
+					We do not take payments until the issue is fixed. 
+					We have great people working for us who have received recognition for their work in the past years. 
+					We are happy to serve you as well. 
+					Tech Repair service include
+                        </p>
+                        <br>
+                        <strong>
+                            Some of our services
+                        </strong>
+                        <ul>
+                            <li>Light installation</li>
+                            <li>General electrician</li>    
+                            <li>AC service and repair</li>
+							<li>Washing machine repair</li>
+							<li>Refrigerator repair</li>
+							<li>Microwave repair</li>						
+                        </ul></div>
+                        <div class="btn-center">
+                            <button type="button" class="btn btn-orange btn-lg" onclick="window.location.href='book';">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+{% endblock %}
