@@ -234,7 +234,8 @@ def tasker_list():
     category = request.args.get("category")
     cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
     cur.execute("""SELECT * FROM tasker where primary_skill=%s and 
-                    tasker.id not in(select Tasker_Id from `Task_Assignment` where Task_Status = 'PENDING')""",(category))
+                    tasker.id not in(select Tasker_Id from `Task_Assignment` where Task_Status = 'PENDING'
+                    and id not in (12,13))""",(category))
     tasker_list = cur.fetchall()
     cur.close()
     tasker_json = []
@@ -291,7 +292,7 @@ def order():
 
     cur.execute("""INSERT INTO `Task_Assignment`(Tasker_Id, Order_Id, Task_Status)
                 VALUES(
-                    (select id from tasker where email = %s),
+                    (select id from tasker where email = %s and id not in (12,13)),
                     %s,
                     'PENDING'
                 )""", (service_tasker_email, primary_key))
@@ -328,12 +329,24 @@ def orders():
                 o.Service_Date as Task_Date
                 FROM `Order` o, Task_Assignment t
                 WHERE o.Order_Id = t.Order_Id
+                and t.Task_Status = 'PENDING'
                 and o.User_Id = (select id from user where email = %s)""",(session['email'],))
     
     order_list = cur.fetchall()
     cur.close()
 
     return render_template("orders.html", order_list=order_list)
+
+@app.route("/delete_order", methods=['POST'])
+def delete_order():
+    id = int(request.form['id'])
+    cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+    print("UPDATE Task_Assignment set Task_Status = 'CANCEL' where Order_Id = %s", id)
+    cur.execute("UPDATE Task_Assignment set Task_Status = 'CANCEL' where Order_Id = %s", (id ,))
+    dashboard_list = cur.fetchall()
+    mysql.connection.commit()
+    cur.close()
+    return redirect(url_for('orders'))
 
 if __name__ == "__main__":
     app.run(debug=True)

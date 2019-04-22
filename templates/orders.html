@@ -25,7 +25,11 @@
                 <td>{{ order['Tasker_name'] }}</td>
                 <td>{{ order['Task_Category'] }}</td>
                 <td>{{ order['Task_Date'] }}</td>
-                <td><a href="#" class="btn btn-danger btn-sm" type="submit"> Cancel</a></td>
+                <td>
+                  <form action="/delete_order" method="POST">
+                    <input type="hidden" name="id" value = "{{ order['Order_Id'] }}">
+                    <button class="btn btn-danger btn-sm" type="submit" name="clicked_btn">Cancel</button>
+                  </form></td>
               </tr>
               {%endfor%}
             </tbody>
