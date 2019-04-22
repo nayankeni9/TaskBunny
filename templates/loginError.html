@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% include 'navbar.html' %}
+{% include 'modal.html' %}
+{% include 'tasker_modal.html' %}
+{% block content %}
+<style>
+#loginError{
+    margin: 2% 30% 0%;
+}
+.container{
+    margin-top: 5%;
+    text-align:center;
+}
+</style>
+<div class="container">
+    <h3>The Email/Password is wrong</h3>
+    <a href="/" class="nav-link" data-toggle="modal" data-target="#popUpWindow">Click here to Login again</a>
+    <img id="loginError" src="https://ih1.redbubble.net/image.72626364.6962/pp,550x550.u2.jpg">
+
+        
+</div>
+
+
+
+{%endblock%}

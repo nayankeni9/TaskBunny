@@ -39,8 +39,10 @@ def login():
             session['email'] = user['email']
             session['type'] = 'USER'
             return redirect(url_for('home'))
+        else:
+            return render_template("loginError.html")
     else:
-        return "Username or Password does not match"
+        return render_template("loginError.html")
 
 @app.route("/logout")
 def logout():
